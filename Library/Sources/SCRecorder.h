@@ -180,15 +180,17 @@
 /**
  The maximum record duration. When the record session record duration
  reaches this bound, the recorder will automatically pause the recording,
- end the current record segment and send recorder:didCompletesession: on the 
+ end the current record segment and send recorder:didCompletesession: on the
  delegate.
  */
 @property (assign, nonatomic) CMTime maxRecordDuration;
 
+@property (assign, nonatomic) CMTime startTime;
+
 /**
  Whether the fast recording method should be enabled.
  Enabling this will disallow pretty much every features provided
- by SCVideoConfiguration and SCAudioConfiguration. It will internally 
+ by SCVideoConfiguration and SCAudioConfiguration. It will internally
  uses a AVCaptureMovieFileOutput that provides no settings. If you have
  some performance issue, you can try enabling this.
  Default is NO.
@@ -356,7 +358,7 @@
 - (void)focusCenter;
 
 /**
- Refocus at the current position 
+ Refocus at the current position
  */
 - (void)refocus;
 
@@ -383,7 +385,7 @@
  Allow the recorder to append the sample buffers inside the current setted session
  */
 - (void)record;
-
+- (void)recordAtTime:(CMTime)startTime;
 /**
  Disallow the recorder to append the sample buffers inside the current setted session.
  If a record segment has started, this will be either canceled or completed depending on

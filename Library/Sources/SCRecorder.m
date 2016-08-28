@@ -742,16 +742,7 @@ static char* SCRecorderPhotoOptionsContext = "PhotoOptionsContext";
         if ( self.startTime.value > 0 && bufferTimestamp.value < self.startTime.value) {
           return;
         }
-        
-        if ( bufferTime - startTimestamp <  + (5.0 - 1/120) ) {
-          NSLog(@"less %f %f %f", bufferTime, startTimestamp, bufferTime - startTimestamp);
-          //return;
-        } else {
-          NSLog(@"more %f %f %f", bufferTime, startTimestamp, bufferTime - startTimestamp);
-        }
-        
-        //                NSLog(@"%f", (double) timestamp.value / (double) timestamp.timescale);
-        
+                
         double timeToWait = kMinTimeBetweenAppend - (CACurrentMediaTime() - _lastAppendedVideoTime);
         
         if (timeToWait > 0) {
